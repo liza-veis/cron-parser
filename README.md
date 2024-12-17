@@ -39,26 +39,26 @@ For more information on the cron format, refer [Cron](https://en.wikipedia.org/w
 
 ```sql
 -- Every day at 00:00
-SELECT cron_parser.get_cron_next_run_date('0 0 * * *', '2024-12-04 15:41:16+00')
--- Result: 2024-12-05 00:00:00+00
+SELECT cron_parser.get_cron_next_run_date('0 0 * * *', '2024-12-04 15:41:16')
+-- Result: 2024-12-05 00:00:00
 
 -- Every Tuesday at 08:00
-SELECT cron_parser.get_cron_next_run_date('0 8 * * 2', '2024-12-04 15:41:16+00')
--- Result: 2024-12-10 08:00:00+00
+SELECT cron_parser.get_cron_next_run_date('0 8 * * 2', '2024-12-04 15:41:16')
+-- Result: 2024-12-10 08:00:00
 
 -- Every Monday at 08:00 in October
-SELECT cron_parser.get_cron_next_run_date('0 8 * 10 1', '2024-12-04 15:41:16+00')
--- Result: 2025-10-06 08:00:00+00
+SELECT cron_parser.get_cron_next_run_date('0 8 * 10 1', '2024-12-04 15:41:16')
+-- Result: 2025-10-06 08:00:00
 
 -- Every Wednesday at 16:00
-SELECT cron_parser.get_cron_next_run_date('0 16 * * 3', '2024-12-04 16:00:16+00');
--- Result: 2024-12-04 16:00:00+00
+SELECT cron_parser.get_cron_next_run_date('0 16 * * 3', '2024-12-04 16:00:16');
+-- Result: 2024-12-04 16:00:00
 
 -- At every minute on 29th in February
-SELECT cron_parser.get_cron_next_run_date('* * 29 2 *', '2025-01-31 23:59:00+00');
+SELECT cron_parser.get_cron_next_run_date('* * 29 2 *', '2025-01-31 23:59:00');
 -- Result: NULL
-SELECT cron_parser.get_cron_next_run_date('* * 29 2 *', '2025-01-31 23:59:00+00', 38);
--- Result: 2028-02-29 00:00:00+00
+SELECT cron_parser.get_cron_next_run_date('* * 29 2 *', '2025-01-31 23:59:00', 38);
+-- Result: 2028-02-29 00:00:00
 ```
 
 ## Algorithm
