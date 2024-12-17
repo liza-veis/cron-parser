@@ -64,6 +64,7 @@ BEGIN
 		('1-60', 6, 1, 59, NULL, TRUE), -- Range higher than max boundary
 		('1-', 6, 1, 59, NULL, TRUE), -- Invalid range notation
 		('-59', 6, 1, 59, NULL, TRUE), -- Invalid range notation
+		('10-1', 6, 1, 59, NULL, TRUE), -- Invalid range notation
 
 		-- Step values
 		('*/3', 0, 0, 59, 0, FALSE), -- Min boundary is even, value matches step

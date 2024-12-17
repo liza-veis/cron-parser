@@ -70,7 +70,7 @@ BEGIN
 			END IF;
 
 			-- Validate range values
-			IF part_range_min < min_value OR part_range_min > max_value THEN
+			IF part_range_min < min_value OR part_range_min > max_value OR part_range_min > part_range_max THEN
 				RAISE EXCEPTION 'Invalid range: value % in field % is out of range %-%', part_range_min, cron_field, min_value, max_value;
 			END IF;
 
@@ -97,7 +97,7 @@ BEGIN
 			part_range_max := SPLIT_PART(part, '-', 2)::INT;
 
 			-- Validate range values
-			IF part_range_min < min_value OR part_range_min > max_value THEN
+			IF part_range_min < min_value OR part_range_min > max_value OR part_range_min > part_range_max THEN
 				RAISE EXCEPTION 'Invalid range: value % in field % is out of range %-%', part_range_min, cron_field, min_value, max_value;
 			END IF;
 
