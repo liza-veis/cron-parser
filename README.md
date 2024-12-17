@@ -15,7 +15,7 @@ PostgreSQL function to parse cron expression and calculate the next run date bas
 - The seconds from the reference_date are ignored in calculations.
 - If an exception occurs, the error is logged, and the function returns NULL.
 
-## Cron Expression Format
+### Cron Expression Format
 
 A cron expression consists of five fields:
 
