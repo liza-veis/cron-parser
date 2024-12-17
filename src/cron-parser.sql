@@ -199,7 +199,7 @@ BEGIN
 		END IF;
 
 		-- Calculate next valid month
-		next_month := get_cron_field_next_value(
+		next_month := cron_parser.get_cron_field_next_value(
 			EXTRACT(MONTH FROM next_run_date)::INT,
 			cron_fields[cron_month_index],
 			cron_field_min[cron_month_index],
@@ -227,7 +227,7 @@ BEGIN
 		) THEN
 			last_day_of_month := EXTRACT(DAY FROM (DATE_TRUNC('month', next_run_date) + INTERVAL '1 month - 1 day'))::INT;
 
-			next_day_of_month := get_cron_field_next_value(
+			next_day_of_month := cron_parser.get_cron_field_next_value(
 				EXTRACT(DAY FROM next_run_date)::INT,
 				cron_fields[cron_day_of_month_index],
 				cron_field_min[cron_day_of_month_index],
@@ -242,7 +242,7 @@ BEGIN
 
 		-- Calculate next valid day of month based on day of week
 		IF cron_fields[cron_day_of_week_index] != '*' THEN
-			next_day_of_week := get_cron_field_next_value(
+			next_day_of_week := cron_parser.get_cron_field_next_value(
 				EXTRACT(DOW FROM next_run_date)::INT,
 				cron_fields[cron_day_of_week_index],
 				cron_field_min[cron_day_of_week_index],
@@ -251,7 +251,7 @@ BEGIN
 
 			-- If no valid value is found in the current week, search the next week
 			IF next_day_of_week IS NULL THEN
-				next_day_of_week := get_cron_field_next_value(
+				next_day_of_week := cron_parser.get_cron_field_next_value(
 					cron_field_min[cron_day_of_week_index],
 					cron_fields[cron_day_of_week_index],
 					cron_field_min[cron_day_of_week_index],
@@ -293,7 +293,7 @@ BEGIN
 		END IF;
 
 		-- Calculate next valid hour
-		next_hour := get_cron_field_next_value(
+		next_hour := cron_parser.get_cron_field_next_value(
 			EXTRACT(HOUR FROM next_run_date)::INT,
 			cron_fields[cron_hour_index],
 			cron_field_min[cron_hour_index],
@@ -311,7 +311,7 @@ BEGIN
 		END IF;
 
 		-- Calculate next valid minute
-		next_minute := get_cron_field_next_value(
+		next_minute := cron_parser.get_cron_field_next_value(
 			EXTRACT(MINUTE FROM next_run_date)::INT,
 			cron_fields[cron_minute_index],
 			cron_field_min[cron_minute_index],
